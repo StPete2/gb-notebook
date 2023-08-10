@@ -17,6 +17,16 @@ public class UserController {
         repository.create(user);
     }
 
+    public String prompt(String message){
+        return repository.prompt(message);
+    }
+
+    public User createUser(){
+        return repository.createUser();
+    }
+    public boolean deleteUser(long userId){
+        return repository.delete(userId);
+    }
     public User readUser(Long userId) throws Exception {
         List<User> users = repository.findAll();
         for (User user : users) {
@@ -31,5 +41,12 @@ public class UserController {
     public void updateUser(String userId, User update) {
         update.setId(Long.parseLong(userId));
         repository.update(Long.parseLong(userId), update);
+    }
+    public List<User> readAll() {
+        return repository.findAll();
+    }
+
+    public User findById(long userId){
+        return repository.findById(userId);
     }
 }
